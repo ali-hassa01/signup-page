@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:#fff;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+button{
+    padding:12px 25px;
+    background:#dc3545;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#b02a37;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Welcome</h1>
+    <p>You have successfully signed in.</p>
+
+    <button onclick="logout()">Sign Out</button>
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCF35CQr_6s6nI2W59HEvPWDH1dZOlxgRs",
+  authDomain: "signup-page-2a58f.firebaseapp.com",
+  projectId: "signup-page-2a58f",
+  storageBucket: "signup-page-2a58f.firebasestorage.app",
+  messagingSenderId: "150901596981",
+  appId: "1:150901596981:web:6bdce5df55e35de3ed227c"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.logout = function(){
+
+signOut(auth)
+.then(()=>{
+alert("Logged Out Successfully");
+window.location.href="index.html";
+})
+.catch((error)=>{
+alert(error.message);
+});
+
+}
+
+</script>
+
+</body>
+</html>
