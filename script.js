@@ -25,7 +25,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Email Signup
-document.getElementById("signupForm").addEventListener("submit", function (e) {
+const signupForm = document.getElementById("signupForm");
+
+if (signupForm) 
+
+signupForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const email = document.getElementById("email").value;
@@ -39,6 +43,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
     .catch((error) => {
         alert(error.message);
     });
+    
 });
 
 // Google Signup
