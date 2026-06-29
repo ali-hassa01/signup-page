@@ -4,6 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
   sendPasswordResetEmail
@@ -70,3 +71,27 @@ window.forgotPassword = function () {
         alert(error.message);
     });
 };
+// Login
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            alert("Login Successful!");
+            window.location.href = "dashboard.html";
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+
+    });
+
+}
